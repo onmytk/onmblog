@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<base href="https://onmytk.github.io/onmblog">
+<meta name="author" content="onmytk">
+
+<meta name="generator" content="Hugo 0.47.1" />
+<title>GitHub Pages &#43; Hugoでブログ</title>
+<link rel="shortcut icon" href="https://onmytk.github.io/images/favicon.ico" type="">
+<link rel="stylesheet" href="https://onmytk.github.io/onmblog/css/style.css">
+<link rel="stylesheet" href="https://onmytk.github.io/onmblog/css/highlight.css">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+
+
+<link href="https://onmytk.github.io/onmblog/index.xml" rel="alternate" type="application/rss+xml" title="tmp" />
+
+
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@https://twitter.com/onmytk">
+  <meta name="twitter:creator" content="@https://twitter.com/onmytk">
+
+
+<meta property="og:title" content="GitHub Pages &#43; Hugoでブログ">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://onmytk.github.io/onmblog">
+
+
+
+
+
+<link rel="canonical" href="https://onmytk.github.io/onmblog/posts/github_pages_hugo/">
+
+    </head>
+<body>
+	  <header class="header">
+			<img src="" alt="">
+
+		</header>
+    <nav class="main-nav">
+        <ul>
+    <li class="active"><a href='https://onmytk.github.io/onmblog'>Articles</a></li>
+    <li><a href='https://onmytk.github.io/onmblog/about'>About</a></li>
+    
+</ul>
+
+    </nav>
+    
+    
+    
+    <div id="site-wrapper">
+        <main>
+            
+  <article class="single">
+    <h1>GitHub Pages &#43; Hugoでブログ</h1>
+    <section class="extras">
+        <span class="tags">
+          <small class="time">May 5, 2019</small>
+          
+             , posted under 
+             
+                <a href="https://onmytk.github.io/onmblog/tags/github">github</a>
+             
+                <a href="https://onmytk.github.io/onmblog/tags/hugo">hugo</a>
+             
+          
+        </span>
+    </section>
+    <section class="description">
+      
+    </section>
+    
+    <section id="content" class="body">
+        
+
+<h2 id="hugoとは">Hugoとは</h2>
+
+<p><a href="https://www.google.co.jp/search?q=Hugo">Hugoとは</a></p>
+
+<h2 id="github-pagesとは">GitHub Pagesとは</h2>
+
+<p><a href="https://www.google.co.jp/search?q=GitHub+Pages">GitHub Pagesとは</a></p>
+
+<h2 id="手順">手順</h2>
+
+<h3 id="環境">環境</h3>
+
+<ul>
+<li>Ubuntu 16.0.4</li>
+</ul>
+
+<h3 id="hugoインストール">Hugoインストール</h3>
+
+<pre><code class="language-sh">$ sudo apt-get install hugo
+</code></pre>
+
+<h3 id="githubリポジトリ作成">GitHubリポジトリ作成</h3>
+
+<p>GitHub Pagesを公開するリポジトリを作成する。
+GitHub PagesのURLは次のようになる。<br />
+<code>https://&lt;ユーザ名&gt;.github.io/&lt;リポジトリ名&gt;</code></p>
+
+<h3 id="サイトを作成">サイトを作成</h3>
+
+<p>ホームディレクトリに作業用のblogディレクトリを作成する。<code>hugo new site &lt;サイト名&gt;</code>でサイトを作成する。</p>
+
+<pre><code class="language-sh">$ mkdir ~/blog
+$ cd ~/blog
+$ hugo new site &lt;サイト名&gt;
+</code></pre>
+
+<h3 id="hugoのテーマ追加">Hugoのテーマ追加</h3>
+
+<p><a href="https://themes.gohugo.io/">Hugo Themes</a>からサイトのテーマを探す。テーマのDownloadをクリックするとGithubに飛ぶ。themesディレクトリに<code>git clone</code>をすることで追加する。</p>
+
+<pre><code class="language-sh">$ cd themes
+$ git clone &lt;git url&gt;
+</code></pre>
+
+<h3 id="hugoの設定">Hugoの設定</h3>
+
+<p>config.tomlを適宜編集する。</p>
+
+<pre><code class="language-sh:config.toml">theme = &quot;&lt;テーマ名&gt;&quot;
+baseurl = &quot;https://&lt;ユーザ名&gt;.github.io/&lt;リポジトリ名&gt;&quot;
+canonifyurls = true
+</code></pre>
+
+<h3 id="とりあえず記事作成">とりあえず記事作成</h3>
+
+<p>ページを作成する。</p>
+
+<pre><code class="language-sh">$ hugo new posts/&lt;ページタイトル&gt;.md
+</code></pre>
+
+<p><code>~/blog/&lt;サイト名&gt;/content/posts/&lt;ページタイトル&gt;.md</code>が作成される。内容は以下の感じ。</p>
+
+<pre><code>---
+title: &quot;&lt;ページタイトル&gt;&quot;
+date: 2019-05-05T00:16:28+09:00
+draft: true 
+---
+
+# test
+## test
+
+</code></pre>
+
+<p>&mdash;で囲まれてる中がメタデータ？になる。<code>draft</code>は<code>true</code>だと下書き状態、<code>false</code>で公開となる。&mdash;以下が内容を書く。</p>
+
+<h3 id="ビルド">ビルド</h3>
+
+<p>ホスティング内容を生成する。</p>
+
+<pre><code class="language-sh">$ hugo
+</code></pre>
+
+<p>ホスティング内容が<code>public</code>ディレクトリ下に生成される。</p>
+
+<h3 id="ローカルで確認">ローカルで確認</h3>
+
+<p>ローカルサーバを起動する。</p>
+
+<pre><code class="language-sh">$ hugo server -D
+</code></pre>
+
+<p><code>localhost:1313/&lt;リポジトリ名&gt;</code>でプレビューを確認可能。</p>
+
+<h3 id="公開">公開</h3>
+
+<p><code>public</code>ディレクトリ下をgh-pagesブランチへpushする。</p>
+
+<pre><code class="language-sh">$ cd public
+$ git init
+$ git remote add origin git@github.com:&lt;ユーザ名&gt;/&lt;リポジトリ&gt;.git
+$ git checkout -b gh-pages
+$ git add .
+$ git commit -m 'initial commit'
+$ git push origin gh-pages
+</code></pre>
+
+<p><code>baseurl</code>に設定したURLにアクセスすると公開される。</p>
+
+<h3 id="その他">その他</h3>
+
+<p>参考URLやHugoページを参照</p>
+
+<h2 id="参考">参考</h2>
+
+<p><a href="https://qiita.com/satzz/items/e24bd703fc04fb45f7ef">HugoとGitHub Pagesで静的サイトを公開する</a>
+<a href="https://qiita.com/ryoma-tokushige/items/eba3e6cd415e9755af87">【2018年版】Hugoとgithub pagesでブログ作る方法【Circle CIも回します】</a></p>
+
+<p><a href="https://github.com/onmytk/onmblog">onmytk/onmblog</a></p>
+
+    </section> 
+    
+    
+     
+  </article>
+  
+<div class="share-card">
+    <a class="twitter" href="https://twitter.com/intent/tweet?text=https%3a%2f%2fonmytk.github.io%2fonmblog%2fposts%2fgithub_pages_hugo%2f - GitHub%20Pages%20%2b%20Hugo%e3%81%a7%e3%83%96%e3%83%ad%e3%82%b0 by @https%3a%2f%2ftwitter.com%2fonmytk"><i class="fa fa-twitter"></i> Tweet</a>
+
+    <a class="facebook" href="#" onclick="
+        window.open(
+          'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+          'facebook-share-dialog',
+          'width=626,height=436');
+        return false;"><i class="fa fa-facebook"></i> Share
+    </a>
+</div>
+
+
+ 
+  
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = '';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+        </main>
+        
+        <aside class="desktop-only">
+            
+	<div class="widgets">
+      
+  <section class="widget">
+    <h2 class="widget-title">Author</h2>
+    <a href="https://twitter.com/onmytk">onmytk</a>
+  </section>
+  
+  <section class="widget">
+    <h2 class="widget-title">Tags</h2>
+        
+        <a href="https://onmytk.github.io/onmblog/tags/bar">bar<span>(1)</span></a>,
+        
+        <a href="https://onmytk.github.io/onmblog/tags/foo">foo<span>(1)</span></a>,
+        
+        <a href="https://onmytk.github.io/onmblog/tags/github">github<span>(1)</span></a>,
+        
+        <a href="https://onmytk.github.io/onmblog/tags/hugo">hugo<span>(1)</span></a>,
+        
+  </section>
+
+</div>
+
+
+            <footer id="footer">
+    <p class="small">
+      
+    </p>
+</footer>
+        </aside>
+    </div>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://onmytk.github.io/onmblog/js/main.js"></script>
+<script src="https://onmytk.github.io/onmblog/js/highlight.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+</body>
+</html>

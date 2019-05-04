@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://onmytk.github.io/onmblog/posts/github_pages_hugo/</loc>
+    <lastmod>2019-05-05T02:55:03+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://onmytk.github.io/onmblog/posts/firstpost/</loc>
     <lastmod>2019-05-05T00:16:28+09:00</lastmod>
   </url>
@@ -20,8 +25,20 @@
   </url>
   
   <url>
+    <loc>https://onmytk.github.io/onmblog/tags/github/</loc>
+    <lastmod>2019-05-05T02:55:03+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://onmytk.github.io/onmblog/tags/hugo/</loc>
+    <lastmod>2019-05-05T02:55:03+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://onmytk.github.io/onmblog/posts/</loc>
-    <lastmod>2019-05-05T00:16:28+09:00</lastmod>
+    <lastmod>2019-05-05T02:55:03+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -33,7 +50,7 @@
   
   <url>
     <loc>https://onmytk.github.io/onmblog/</loc>
-    <lastmod>2019-05-05T00:16:28+09:00</lastmod>
+    <lastmod>2019-05-05T02:55:03+09:00</lastmod>
     <priority>0</priority>
   </url>
   

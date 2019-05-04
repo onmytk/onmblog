@@ -29,5 +29,23 @@
       <description></description>
     </item>
     
+    <item>
+      <title>Github</title>
+      <link>https://onmytk.github.io/onmblog/tags/github/</link>
+      <pubDate>Sun, 05 May 2019 02:55:03 +0900</pubDate>
+      
+      <guid>https://onmytk.github.io/onmblog/tags/github/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hugo</title>
+      <link>https://onmytk.github.io/onmblog/tags/hugo/</link>
+      <pubDate>Sun, 05 May 2019 02:55:03 +0900</pubDate>
+      
+      <guid>https://onmytk.github.io/onmblog/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

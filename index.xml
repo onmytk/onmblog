@@ -6,10 +6,26 @@
     <description>Recent content on tmp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 05 May 2019 00:16:28 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 05 May 2019 02:55:03 +0900</lastBuildDate>
     
 	<atom:link href="https://onmytk.github.io/onmblog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>GitHub Pages &#43; Hugoでブログ</title>
+      <link>https://onmytk.github.io/onmblog/posts/github_pages_hugo/</link>
+      <pubDate>Sun, 05 May 2019 02:55:03 +0900</pubDate>
+      
+      <guid>https://onmytk.github.io/onmblog/posts/github_pages_hugo/</guid>
+      <description>Hugoとは Hugoとは
+GitHub Pagesとは GitHub Pagesとは
+手順 環境  Ubuntu 16.0.4  Hugoインストール $ sudo apt-get install hugo  GitHubリポジトリ作成 GitHub Pagesを公開するリポジトリを作成する。 GitHub PagesのURLは次のようになる。
+https://&amp;lt;ユーザ名&amp;gt;.github.io/&amp;lt;リポジトリ名&amp;gt;
+サイトを作成 ホームディレクトリに作業用のblogディレクトリを作成する。hugo new site &amp;lt;サイト名&amp;gt;でサイトを作成する。
+$ mkdir ~/blog $ cd ~/blog $ hugo new site &amp;lt;サイト名&amp;gt;  Hugoのテーマ追加 Hugo Themesからサイトのテーマを探す。テーマのDownloadをクリックするとGithubに飛ぶ。themesディレクトリにgit cloneをすることで追加する。
+$ cd themes $ git clone &amp;lt;git url&amp;gt;  Hugoの設定 config.tomlを適宜編集する。
+theme = &amp;quot;&amp;lt;テーマ名&amp;gt;&amp;quot; baseurl = &amp;quot;https://&amp;lt;ユーザ名&amp;gt;.github.io/&amp;lt;リポジトリ名&amp;gt;&amp;quot; canonifyurls = true  とりあえず記事作成 ページを作成する。</description>
+    </item>
     
     <item>
       <title>FirstPost</title>
