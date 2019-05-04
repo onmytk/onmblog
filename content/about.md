@@ -1,5 +1,6 @@
 ---
 title: "About"
-draft: true
+draft: false
 ---
 
+いろいろやったことを書く
