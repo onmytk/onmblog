@@ -6,9 +6,28 @@
     <description>Recent content in Tags on tmp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Sun, 05 May 2019 00:16:28 +0900</lastBuildDate>
     
 	<atom:link href="https://onmytk.github.io/onmblog/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Bar</title>
+      <link>https://onmytk.github.io/onmblog/tags/bar/</link>
+      <pubDate>Sun, 05 May 2019 00:16:28 +0900</pubDate>
+      
+      <guid>https://onmytk.github.io/onmblog/tags/bar/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Foo</title>
+      <link>https://onmytk.github.io/onmblog/tags/foo/</link>
+      <pubDate>Sun, 05 May 2019 00:16:28 +0900</pubDate>
+      
+      <guid>https://onmytk.github.io/onmblog/tags/foo/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>
