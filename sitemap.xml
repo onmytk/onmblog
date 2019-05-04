@@ -3,28 +3,28 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://onmblog.github.io/posts/firstpost/</loc>
+    <loc>http://onmytk.github.io/onmblog/posts/firstpost/</loc>
     <lastmod>2019-05-05T00:16:28+09:00</lastmod>
   </url>
   
   <url>
-    <loc>http://onmblog.github.io/categories/</loc>
+    <loc>http://onmytk.github.io/onmblog/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://onmblog.github.io/posts/</loc>
+    <loc>http://onmytk.github.io/onmblog/posts/</loc>
     <lastmod>2019-05-05T00:16:28+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://onmblog.github.io/tags/</loc>
+    <loc>http://onmytk.github.io/onmblog/tags/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://onmblog.github.io/</loc>
+    <loc>http://onmytk.github.io/onmblog/</loc>
     <lastmod>2019-05-05T00:16:28+09:00</lastmod>
     <priority>0</priority>
   </url>

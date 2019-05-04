@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>tmp</title>
-    <link>http://onmblog.github.io/</link>
+    <link>http://onmytk.github.io/onmblog/</link>
     <description>Recent content on tmp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 05 May 2019 00:16:28 +0900</lastBuildDate>
     
-	<atom:link href="http://onmblog.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://onmytk.github.io/onmblog/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>FirstPost</title>
-      <link>http://onmblog.github.io/posts/firstpost/</link>
+      <link>http://onmytk.github.io/onmblog/posts/firstpost/</link>
       <pubDate>Sun, 05 May 2019 00:16:28 +0900</pubDate>
       
-      <guid>http://onmblog.github.io/posts/firstpost/</guid>
+      <guid>http://onmytk.github.io/onmblog/posts/firstpost/</guid>
       <description>ぶろぐ を書くことにしました</description>
     </item>
     
