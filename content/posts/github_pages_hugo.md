@@ -4,6 +4,7 @@ date: 2019-05-05T02:55:03+09:00
 draft: false 
 categories: [ "web" ]
 tags: [ "github", "hugo" ]
+description: "を始めます"
 ---
 
 ## Hugoとは
