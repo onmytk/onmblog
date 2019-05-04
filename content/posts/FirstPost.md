@@ -2,6 +2,8 @@
 title: "FirstPost"
 date: 2019-05-05T00:16:28+09:00
 draft: false
+categories: ["foo"]
+tags: [ "foo", "bar" ]
 ---
-# ぶろぐ
-を書くことにしました
+
+いろいろ

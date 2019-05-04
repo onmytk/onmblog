@@ -1,5 +1,30 @@
 theme = "onepress"
-baseURL = "http://onmblog.github.io/"
+baseURL = "https://onmytk.github.io/onmblog"
 languageCode = "en-us"
 title = "tmp"
 canonifyurls = true
+config = "config.toml"
+paginate = 12
+
+[params]
+	author = "onmytk"
+	bio = ""
+	logo = ""
+	avatar = ""
+	opengraphImage = ""
+	enableRSS = true
+	customCSS = false
+	readMore = "Read Up"
+
+	twitter = "https://twitter.com/onmytk"
+	github = "https://github.com/onmytk"
+
+	widgets = true
+	
+	authorCard = false
+	shareButton = true
+
+	highlightJS = true
+
+[taxonomies]
+	tag = "tags"

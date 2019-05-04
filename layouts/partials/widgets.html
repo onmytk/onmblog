@@ -1,0 +1,15 @@
+<div class="widgets">
+      
+  <section class="widget">
+    <h2 class="widget-title">Author</h2>
+    <a href="https://twitter.com/onmytk">onmytk</a>
+  </section>
+  
+  <section class="widget">
+    <h2 class="widget-title">Tags</h2>
+        {{ range .Site.Taxonomies.tags.ByCount }}
+        <a href="{{ $.Site.BaseURL | relURL }}tags/{{ .Name | urlize }}">{{ .Name }}<span>({{ .Count }})</span></a>,
+        {{ end }}
+  </section>
+
+</div>
