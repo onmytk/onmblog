@@ -36,5 +36,14 @@ theme = &amp;quot;&amp;lt;テーマ名&amp;gt;&amp;quot; baseurl = &amp;quot;htt
       <description>いろいろ</description>
     </item>
     
+    <item>
+      <title>About</title>
+      <link>https://onmytk.github.io/onmblog/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://onmytk.github.io/onmblog/about/</guid>
+      <description>いろいろやったことを書く</description>
+    </item>
+    
   </channel>
 </rss>
