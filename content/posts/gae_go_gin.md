@@ -2,8 +2,8 @@
 title: "GAE/Go + ginでAPIサーバを作る"
 date: 2019-05-13T21:30:20+09:00
 draft: true
-categories: []
-tags: []
+categories: [ "web" ]
+tags: ["GAE", "Go", "gin" ]
 description: ""
 ---
 
@@ -19,12 +19,12 @@ Todo
 ### Google Cloud SDKのインストール
 [Google Cloud SDKのドキュメント](https://cloud.google.com/sdk/docs/?hl=ja#deb)
 
-```
+```sh
 $ gcloud init
 ```
 でアカウントの設定、新しいプロジェクの作成まで行う。
 
-```
+```sh
 $ sudo apt-get install google-cloud-sdk-app-engine-python google-cloud-sdk-app-engine-go google-cloud-sdk-datastore-emulator
 ```
 
@@ -37,7 +37,7 @@ Environment: 標準
 -> 作成
 
 ### GAE設定ファイル作成
-```app.yaml:sh
+```yaml:app.yaml
 version: 1
 runtime: go
 api_version: go1
@@ -49,7 +49,7 @@ handlers:
 
 ### サンプルアプリケーション
 
-```main.go:go
+```go:main.go
 package main
 
 import (
@@ -75,7 +75,7 @@ func init()  {
 
 ### サンプルアプリケーションの起動
 ```sh
-$ $ dev_appserver.py app.yaml
+$ dev_appserver.py app.yaml
 ```
 localhost:8080にアクセスしてHello Worldが表示されてればおｋ
 
