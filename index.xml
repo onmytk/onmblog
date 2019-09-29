@@ -6,10 +6,34 @@
     <description>Recent content on tmp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 05 May 2019 02:55:03 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 29 Sep 2019 18:24:07 +0900</lastBuildDate>
     
 	<atom:link href="https://onmytk.github.io/onmblog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Heroku &#43; pythonでLine Botを作る</title>
+      <link>https://onmytk.github.io/onmblog/posts/linebot/</link>
+      <pubDate>Sun, 29 Sep 2019 18:24:07 +0900</pubDate>
+      
+      <guid>https://onmytk.github.io/onmblog/posts/linebot/</guid>
+      <description>動作環境  python 3.6.5  前提  Lineアカウント作成済み Herokuアカウント作成済み heroku cliでログイン済み  ソース onmytk/LineBot
+やったこと Line Developersでプロバイダ作成 Line APIを使えるようにするために
+1. プロバイダ作成
+2. チャンネル作成
+手順はこの辺参考
+LINEのBot開発 超入門（前編） ゼロから応答ができるまで
+herokuでアプリケーション作成  作業フォルダにgitリポジトリ作成
+$ git init $ git add . $ git commit -m &amp;quot;first commit&amp;quot;  herokuにアプリケーション作成
+$ heroku create &amp;lt;アプリ名&amp;gt;  デプロイ
+$ git push heroku master  DB追加
+TODO
+ 環境変数追加
+Line Developersからチャンネルのアクセストークンとかを取得して、herokuの環境変数に追加
+DBのURLとかも追加する
+ herokuのアドレスをLine DevelopersのWebhook URLに設定
+https://&amp;lt;アプリ名&amp;gt;.herokuapp.com/callback</description>
+    </item>
     
     <item>
       <title>GitHub Pages &#43; Hugoでブログ</title>

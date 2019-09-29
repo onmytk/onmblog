@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<base href="https://onmytk.github.io/onmblog">
+<meta name="author" content="onmytk">
+
+<meta name="generator" content="Hugo 0.53" />
+<title>Heroku &#43; pythonでLine Botを作る</title>
+<link rel="shortcut icon" href="https://onmytk.github.io/images/favicon.ico" type="">
+<link rel="stylesheet" href="https://onmytk.github.io/onmblog/css/style.css">
+<link rel="stylesheet" href="https://onmytk.github.io/onmblog/css/highlight.css">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+
+
+<link href="https://onmytk.github.io/onmblog/index.xml" rel="alternate" type="application/rss+xml" title="tmp" />
+
+
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@https://twitter.com/onmytk">
+  <meta name="twitter:creator" content="@https://twitter.com/onmytk">
+
+
+<meta property="og:title" content="Heroku &#43; pythonでLine Botを作る">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://onmytk.github.io/onmblog">
+
+
+
+
+  <meta name="og:description" content="2ヵ月前ぐらいのを記憶を頼りに">
+
+
+<link rel="canonical" href="https://onmytk.github.io/onmblog/posts/linebot/">
+
+    </head>
+<body>
+	  <header class="header">
+			<img src="" alt="">
+
+		</header>
+    <nav class="main-nav">
+        <ul>
+    <li class="active"><a href='https://onmytk.github.io/onmblog'>Articles</a></li>
+    <li><a href='https://onmytk.github.io/onmblog/about'>About</a></li>
+    
+</ul>
+
+    </nav>
+    
+    
+    
+    <div id="site-wrapper">
+        <main>
+            
+  <article class="single">
+    <h1>Heroku &#43; pythonでLine Botを作る</h1>
+    <section class="extras">
+        <span class="tags">
+          <small class="time">September 29, 2019</small>
+          
+             , posted under 
+             
+                <a href="https://onmytk.github.io/onmblog/tags/heroku">Heroku</a>
+             
+                <a href="https://onmytk.github.io/onmblog/tags/python">python</a>
+             
+                <a href="https://onmytk.github.io/onmblog/tags/bot">bot</a>
+             
+                <a href="https://onmytk.github.io/onmblog/tags/line">LINE</a>
+             
+          
+        </span>
+    </section>
+    <section class="description">
+      2ヵ月前ぐらいのを記憶を頼りに
+    </section>
+    
+    <section id="content" class="body">
+        
+
+<h2 id="動作環境">動作環境</h2>
+
+<ul>
+<li>python 3.6.5</li>
+</ul>
+
+<h2 id="前提">前提</h2>
+
+<ul>
+<li>Lineアカウント作成済み</li>
+<li>Herokuアカウント作成済み</li>
+<li>heroku cliでログイン済み</li>
+</ul>
+
+<h2 id="ソース">ソース</h2>
+
+<p><a href="https://github.com/onmytk/LineBot">onmytk/LineBot</a></p>
+
+<h2 id="やったこと">やったこと</h2>
+
+<h3 id="line-developers-https-developers-line-biz-ja-でプロバイダ作成"><a href="https://developers.line.biz/ja/">Line Developers</a>でプロバイダ作成</h3>
+
+<p>Line APIを使えるようにするために<br />
+1. プロバイダ作成<br />
+2. チャンネル作成</p>
+
+<p>手順はこの辺参考<br />
+<a href="https://qiita.com/nkjm/items/38808bbc97d6927837cd">LINEのBot開発 超入門（前編） ゼロから応答ができるまで</a></p>
+
+<h3 id="herokuでアプリケーション作成">herokuでアプリケーション作成</h3>
+
+<ol>
+<li><p>作業フォルダにgitリポジトリ作成</p>
+
+<pre><code>$ git init
+$ git add .
+$ git commit -m &quot;first commit&quot;
+</code></pre></li>
+
+<li><p>herokuにアプリケーション作成</p>
+
+<pre><code>$ heroku create &lt;アプリ名&gt;
+</code></pre></li>
+
+<li><p>デプロイ</p>
+
+<pre><code>$ git push heroku master
+</code></pre></li>
+
+<li><p>DB追加<br />
+TODO</p></li>
+
+<li><p>環境変数追加<br />
+Line Developersからチャンネルのアクセストークンとかを取得して、herokuの環境変数に追加<br />
+DBのURLとかも追加する</p></li>
+
+<li><p>herokuのアドレスをLine DevelopersのWebhook URLに設定<br />
+https://&lt;アプリ名&gt;.herokuapp.com/callback<br />
+を設定</p></li>
+</ol>
+
+<h3 id="プログラム作成">プログラム作成</h3>
+
+<h4 id="ライブラリ">ライブラリ</h4>
+
+<p>適宜pipでインストール</p>
+
+<pre><code>Flask==1.1.1
+line-bot-sdk==1.12.1
+psycopg2==2.7.5
+SQLAlchemy==1.3.6
+Flask-SQLAlchemy==2.4.0
+</code></pre>
+
+<h4 id="ソース-1">ソース</h4>
+
+<p>メッセージの頭見て</p>
+
+<ul>
+<li>add : DBに追加</li>
+<li>delete : DBから削除</li>
+<li>summary : 集計</li>
+</ul>
+
+<p>を行う</p>
+
+<pre><code>from flask import Flask, request, abort
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import func, desc
+
+from linebot import (
+    LineBotApi, WebhookHandler
+)
+from linebot.exceptions import (
+    InvalidSignatureError
+)
+from linebot.models import (
+    MessageEvent, TextMessage, TextSendMessage
+)
+
+import os
+import datetime
+
+
+app = Flask(__name__)
+
+# Get enviroment variables
+## Line
+CHANNEL_ACCESS_TOKEN = os.environ['CHANNEL_ACCESS_TOKEN']
+CHANNEL_SECRET = os.environ['CHANNEL_SECRET']
+
+line_bot_api = LineBotApi(CHANNEL_ACCESS_TOKEN)
+handler = WebhookHandler(CHANNEL_SECRET)
+
+## Database
+db_uri = os.environ['DATABASE_URL']
+app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
+db = SQLAlchemy(app)
+
+
+class Account(db.Model):
+    __tablename__ = 'accounts'
+    id = db.Column(db.Integer, primary_key=True)
+    date = db.Column(db.Date, nullable=False)
+    amount = db.Column(db.Integer, nullable=False)
+    type = db.Column(db.String(), nullable=False)
+
+
+# Webhook from LINE
+@app.route('/callback', methods=['POST'])
+def callback():
+    # Get signature from request header
+    signature = request.headers['X-Line-Signature']
+
+    # Get request body
+    body = request.get_data(as_text=True)
+    app.logger.info('Request body: ' + body)
+
+    # Verification signature
+    try:
+        handler.handle(body, signature)
+    except InvalidSignatureError:
+        abort(400)
+    
+    return 'OK'
+
+
+@handler.add(MessageEvent, message=TextMessage)
+def handle_message(event):
+    
+    message = event.message.text.split(' ')
+
+    if message[0] == 'add':
+        add_account(message)
+        result = '追加しました！'
+        # push_message(event, '追加しました！')
+    elif message[0] == 'delete':
+        delete_account()
+        result = '消しました！'
+        # push_message(event, '消しました！')
+    elif message[0] == 'summary':
+        result = get_summary()
+        # push_message(event, get_summary())
+    else:
+        result = 'こんにちは！'
+
+    line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(text = result)
+    )
+
+
+def add_account(message):
+    account = Account()
+
+    if len(message) == 4:
+        account.date = message[3]
+    else:
+        account.date = datetime.date.today().isoformat()
+    account.amount = int(message[2])
+    account.type = message[1]
+    
+    db.session.add(account)
+    db.session.commit()
+
+def delete_account():
+    account = db.session.query(Account).order_by(desc(Account.id)).first()
+    db.session.delete(account)
+    db.session.commit()
+
+def get_summary():
+    mes = ''
+    dt = datetime.datetime.today()
+    first_date = dt.date() - datetime.timedelta(days=dt.day - 1)
+
+    month_total = 0
+    # where
+    accounts = db.session.query(Account.type, func.sum(Account.amount)).filter(Account.date &gt;= first_date).group_by(Account.type)
+    for account in accounts:
+        month_total += account[1]
+        mes += account[0] + ' \\' + '{:,d}'.format(account[1]) + '\n'
+    mes += '----------\n'
+    mes += '月合計 \\' + '{:,d}'.format(month_total) + '\n'
+
+    accounts = db.session.query(func.sum(Account.amount))
+    for account in accounts:
+        mes += '合計 \\' + '{:,d}'.format(account[0])
+
+    return mes
+
+def push_message(event, message):
+    line_bot_api.push_message(
+            line_bot_api.get_profile(event.source.user_id).user_id,
+            TextSendMessage(text = message)
+        )
+
+if __name__ == '__main__':
+    port = int(os.getenv('PORT', 5000))
+    # app.run(host='0.0.0.0', port=port, debug=True)
+    app.run(host='0.0.0.0', port=port)
+
+</code></pre>
+
+<h4 id="諸々作成">諸々作成</h4>
+
+<p>Procfileを作成</p>
+
+<pre><code>$ echo &quot;web: python main.py&quot; &gt; Procfile
+</code></pre>
+
+<p>requirements.txtを作成</p>
+
+<pre><code>$ pip freeze &gt; requirements.txt
+</code></pre>
+
+<p>runtime.txtを作成</p>
+
+<pre><code>$ echo &quot;python-3.6.5&quot; &gt; runtime.txt
+</code></pre>
+
+<h3 id="デプロイ-動作確認">デプロイ&amp;動作確認</h3>
+
+<pre><code>$ git add .
+$ git commit -m &quot;こみっと&quot;
+$ git push heroku master
+</code></pre>
+
+<p><img src="./posts/img/2019-09-29_191331.jpg" alt="image" /></p>
+
+    </section> 
+    
+    
+     
+  </article>
+  
+<div class="share-card">
+    <a class="twitter" href="https://twitter.com/intent/tweet?text=https%3a%2f%2fonmytk.github.io%2fonmblog%2fposts%2flinebot%2f - Heroku%20%2b%20python%e3%81%a7Line%20Bot%e3%82%92%e4%bd%9c%e3%82%8b by @https%3a%2f%2ftwitter.com%2fonmytk"><i class="fa fa-twitter"></i> Tweet</a>
+
+    <a class="facebook" href="#" onclick="
+        window.open(
+          'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+          'facebook-share-dialog',
+          'width=626,height=436');
+        return false;"><i class="fa fa-facebook"></i> Share
+    </a>
+</div>
+
+
+ 
+  
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = '';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+        </main>
+        
+        <aside class="desktop-only">
+            
+	<div class="widgets">
+      
+  <section class="widget">
+    <h2 class="widget-title">Author</h2>
+    <a href="https://twitter.com/onmytk">onmytk</a>
+  </section>
+  
+  <section class="widget">
+    <h2 class="widget-title">Tags</h2>
+        
+        <a href="https://onmytk.github.io/onmblog/tags/bar">bar<span>(1)</span></a>,
+        
+        <a href="https://onmytk.github.io/onmblog/tags/bot">bot<span>(1)</span></a>,
+        
+        <a href="https://onmytk.github.io/onmblog/tags/foo">foo<span>(1)</span></a>,
+        
+        <a href="https://onmytk.github.io/onmblog/tags/github">github<span>(1)</span></a>,
+        
+        <a href="https://onmytk.github.io/onmblog/tags/heroku">heroku<span>(1)</span></a>,
+        
+        <a href="https://onmytk.github.io/onmblog/tags/hugo">hugo<span>(1)</span></a>,
+        
+        <a href="https://onmytk.github.io/onmblog/tags/line">line<span>(1)</span></a>,
+        
+        <a href="https://onmytk.github.io/onmblog/tags/python">python<span>(1)</span></a>,
+        
+  </section>
+
+</div>
+
+
+            <footer id="footer">
+    <p class="small">
+      
+    </p>
+</footer>
+        </aside>
+    </div>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://onmytk.github.io/onmblog/js/main.js"></script>
+<script src="https://onmytk.github.io/onmblog/js/highlight.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+</body>
+</html>
