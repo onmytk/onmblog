@@ -4,7 +4,7 @@ date: 2019-05-13T21:30:20+09:00
 draft: true
 categories: [ "web" ]
 tags: ["GAE", "Go", "gin" ]
-description: ""
+description: "サンプルアプリケーションの起動まで"
 ---
 
 ## Webアプリ概要
