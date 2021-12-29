@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Github on tmp</title>
+    <title>github on tmp</title>
     <link>https://onmytk.github.io/onmblog/tags/github/</link>
-    <description>Recent content in Github on tmp</description>
+    <description>Recent content in github on tmp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 05 May 2019 02:55:03 +0900</lastBuildDate>
@@ -19,12 +19,13 @@
       <guid>https://onmytk.github.io/onmblog/posts/github_pages_hugo/</guid>
       <description>Hugoとは Hugoとは
 GitHub Pagesとは GitHub Pagesとは
-手順 環境  Ubuntu 16.0.4  Hugoインストール $ sudo apt-get install hugo  GitHubリポジトリ作成 GitHub Pagesを公開するリポジトリを作成する。 GitHub PagesのURLは次のようになる。
+手順 環境  Ubuntu 16.0.4  Hugoインストール $ sudo apt-get install hugo GitHubリポジトリ作成 GitHub Pagesを公開するリポジトリを作成する。 GitHub PagesのURLは次のようになる。
 https://&amp;lt;ユーザ名&amp;gt;.github.io/&amp;lt;リポジトリ名&amp;gt;
 サイトを作成 ホームディレクトリに作業用のblogディレクトリを作成する。hugo new site &amp;lt;サイト名&amp;gt;でサイトを作成する。
-$ mkdir ~/blog $ cd ~/blog $ hugo new site &amp;lt;サイト名&amp;gt;  Hugoのテーマ追加 Hugo Themesからサイトのテーマを探す。テーマのDownloadをクリックするとGithubに飛ぶ。themesディレクトリにgit cloneをすることで追加する。
-$ cd themes $ git clone &amp;lt;git url&amp;gt;  Hugoの設定 config.tomlを適宜編集する。
-theme = &amp;quot;&amp;lt;テーマ名&amp;gt;&amp;quot; baseurl = &amp;quot;https://&amp;lt;ユーザ名&amp;gt;.github.io/&amp;lt;リポジトリ名&amp;gt;&amp;quot; canonifyurls = true  とりあえず記事作成 ページを作成する。</description>
+$ mkdir ~/blog $ cd ~/blog $ hugo new site &amp;lt;サイト名&amp;gt; Hugoのテーマ追加 Hugo Themesからサイトのテーマを探す。テーマのDownloadをクリックするとGithubに飛ぶ。themesディレクトリにgit cloneをすることで追加する。
+$ cd themes $ git clone &amp;lt;git url&amp;gt; Hugoの設定 config.tomlを適宜編集する。
+theme = &amp;#34;&amp;lt;テーマ名&amp;gt;&amp;#34; baseurl = &amp;#34;https://&amp;lt;ユーザ名&amp;gt;.github.io/&amp;lt;リポジトリ名&amp;gt;&amp;#34; canonifyurls = true とりあえず記事作成 ページを作成する。
+$ hugo new posts/&amp;lt;ページタイトル&amp;gt;.md ~/blog/&amp;lt;サイト名&amp;gt;/content/posts/&amp;lt;ページタイトル&amp;gt;.mdが作成される。内容は以下の感じ。</description>
     </item>
     
   </channel>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>tmp</title>
@@ -19,20 +19,31 @@
       <guid>https://onmytk.github.io/onmblog/posts/linebot/</guid>
       <description>動作環境  python 3.6.5  前提  Lineアカウント作成済み Herokuアカウント作成済み heroku cliでログイン済み  ソース onmytk/LineBot
 やったこと Line Developersでプロバイダ作成 Line APIを使えるようにするために
-1. プロバイダ作成
-2. チャンネル作成
-手順はこの辺参考
+ プロバイダ作成 チャンネル作成  手順はこの辺参考
 LINEのBot開発 超入門（前編） ゼロから応答ができるまで
-herokuでアプリケーション作成  作業フォルダにgitリポジトリ作成
-$ git init $ git add . $ git commit -m &amp;quot;first commit&amp;quot;  herokuにアプリケーション作成
-$ heroku create &amp;lt;アプリ名&amp;gt;  デプロイ
-$ git push heroku master  DB追加
+herokuでアプリケーション作成  作業フォルダにgitリポジトリ作成  $ git init $ git add . $ git commit -m &amp;quot;first commit&amp;quot; herokuにアプリケーション作成  $ heroku create &amp;lt;アプリ名&amp;gt; デプロイ  $ git push heroku master  DB追加
 TODO
- 環境変数追加
+  環境変数追加
 Line Developersからチャンネルのアクセストークンとかを取得して、herokuの環境変数に追加
 DBのURLとかも追加する
- herokuのアドレスをLine DevelopersのWebhook URLに設定
-https://&amp;lt;アプリ名&amp;gt;.herokuapp.com/callback</description>
+  herokuのアドレスをLine DevelopersのWebhook URLに設定</description>
+    </item>
+    
+    <item>
+      <title>GAE/Go &#43; ginでAPIサーバを作る</title>
+      <link>https://onmytk.github.io/onmblog/posts/gae_go_gin/</link>
+      <pubDate>Mon, 13 May 2019 21:30:20 +0900</pubDate>
+      
+      <guid>https://onmytk.github.io/onmblog/posts/gae_go_gin/</guid>
+      <description>Webアプリ概要 Todo
+環境  Ubuntu 18.10 Go 1.10 python 2.7.15  手順 Google Cloud SDKのインストール Google Cloud SDKのドキュメント
+$ gcloud init でアカウントの設定、新しいプロジェクの作成まで行う。
+$ sudo apt-get install google-cloud-sdk-app-engine-python google-cloud-sdk-app-engine-go google-cloud-sdk-datastore-emulator Google App Engineアプリケーションの作成 Google Cloud Platform
+App Engine &amp;gt; 開始 &amp;gt;
+Language: Go
+Environment: 標準
+-&amp;gt; 作成
+GAE設定ファイル作成 version: 1 runtime: go api_version: go1 handlers: - url: /.* script: _go_app サンプルアプリケーション package main import ( &amp;#34;net/http&amp;#34; &amp;#34;github.com/gin-gonic/gin&amp;#34; ) func init() { gin.</description>
     </item>
     
     <item>
@@ -43,12 +54,13 @@ https://&amp;lt;アプリ名&amp;gt;.herokuapp.com/callback</description>
       <guid>https://onmytk.github.io/onmblog/posts/github_pages_hugo/</guid>
       <description>Hugoとは Hugoとは
 GitHub Pagesとは GitHub Pagesとは
-手順 環境  Ubuntu 16.0.4  Hugoインストール $ sudo apt-get install hugo  GitHubリポジトリ作成 GitHub Pagesを公開するリポジトリを作成する。 GitHub PagesのURLは次のようになる。
+手順 環境  Ubuntu 16.0.4  Hugoインストール $ sudo apt-get install hugo GitHubリポジトリ作成 GitHub Pagesを公開するリポジトリを作成する。 GitHub PagesのURLは次のようになる。
 https://&amp;lt;ユーザ名&amp;gt;.github.io/&amp;lt;リポジトリ名&amp;gt;
 サイトを作成 ホームディレクトリに作業用のblogディレクトリを作成する。hugo new site &amp;lt;サイト名&amp;gt;でサイトを作成する。
-$ mkdir ~/blog $ cd ~/blog $ hugo new site &amp;lt;サイト名&amp;gt;  Hugoのテーマ追加 Hugo Themesからサイトのテーマを探す。テーマのDownloadをクリックするとGithubに飛ぶ。themesディレクトリにgit cloneをすることで追加する。
-$ cd themes $ git clone &amp;lt;git url&amp;gt;  Hugoの設定 config.tomlを適宜編集する。
-theme = &amp;quot;&amp;lt;テーマ名&amp;gt;&amp;quot; baseurl = &amp;quot;https://&amp;lt;ユーザ名&amp;gt;.github.io/&amp;lt;リポジトリ名&amp;gt;&amp;quot; canonifyurls = true  とりあえず記事作成 ページを作成する。</description>
+$ mkdir ~/blog $ cd ~/blog $ hugo new site &amp;lt;サイト名&amp;gt; Hugoのテーマ追加 Hugo Themesからサイトのテーマを探す。テーマのDownloadをクリックするとGithubに飛ぶ。themesディレクトリにgit cloneをすることで追加する。
+$ cd themes $ git clone &amp;lt;git url&amp;gt; Hugoの設定 config.tomlを適宜編集する。
+theme = &amp;#34;&amp;lt;テーマ名&amp;gt;&amp;#34; baseurl = &amp;#34;https://&amp;lt;ユーザ名&amp;gt;.github.io/&amp;lt;リポジトリ名&amp;gt;&amp;#34; canonifyurls = true とりあえず記事作成 ページを作成する。
+$ hugo new posts/&amp;lt;ページタイトル&amp;gt;.md ~/blog/&amp;lt;サイト名&amp;gt;/content/posts/&amp;lt;ページタイトル&amp;gt;.mdが作成される。内容は以下の感じ。</description>
     </item>
     
     <item>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GAE on tmp</title>
+    <link>https://onmytk.github.io/onmblog/tags/gae/</link>
+    <description>Recent content in GAE on tmp</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 13 May 2019 21:30:20 +0900</lastBuildDate>
+    
+	<atom:link href="https://onmytk.github.io/onmblog/tags/gae/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>GAE/Go &#43; ginでAPIサーバを作る</title>
+      <link>https://onmytk.github.io/onmblog/posts/gae_go_gin/</link>
+      <pubDate>Mon, 13 May 2019 21:30:20 +0900</pubDate>
+      
+      <guid>https://onmytk.github.io/onmblog/posts/gae_go_gin/</guid>
+      <description>Webアプリ概要 Todo
+環境  Ubuntu 18.10 Go 1.10 python 2.7.15  手順 Google Cloud SDKのインストール Google Cloud SDKのドキュメント
+$ gcloud init でアカウントの設定、新しいプロジェクの作成まで行う。
+$ sudo apt-get install google-cloud-sdk-app-engine-python google-cloud-sdk-app-engine-go google-cloud-sdk-datastore-emulator Google App Engineアプリケーションの作成 Google Cloud Platform
+App Engine &amp;gt; 開始 &amp;gt;
+Language: Go
+Environment: 標準
+-&amp;gt; 作成
+GAE設定ファイル作成 version: 1 runtime: go api_version: go1 handlers: - url: /.* script: _go_app サンプルアプリケーション package main import ( &amp;#34;net/http&amp;#34; &amp;#34;github.com/gin-gonic/gin&amp;#34; ) func init() { gin.</description>
+    </item>
+    
+  </channel>
+</rss>

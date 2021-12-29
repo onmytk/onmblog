@@ -7,7 +7,7 @@
 <base href="https://onmytk.github.io/onmblog">
 <meta name="author" content="onmytk">
 
-<meta name="generator" content="Hugo 0.53" />
+<meta name="generator" content="Hugo 0.68.3" />
 <title>Heroku &#43; pythonでLine Botを作る</title>
 <link rel="shortcut icon" href="https://onmytk.github.io/images/favicon.ico" type="">
 <link rel="stylesheet" href="https://onmytk.github.io/onmblog/css/style.css">
@@ -22,8 +22,8 @@
 
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@https://twitter.com/onmytk">
-  <meta name="twitter:creator" content="@https://twitter.com/onmytk">
+  <meta name="twitter:site" content="@onmytk">
+  <meta name="twitter:creator" content="@onmytk">
 
 
 <meta property="og:title" content="Heroku &#43; pythonでLine Botを作る">
@@ -82,94 +82,74 @@
     </section>
     
     <section id="content" class="body">
-        
-
-<h2 id="動作環境">動作環境</h2>
-
+        <h2 id="動作環境">動作環境</h2>
 <ul>
 <li>python 3.6.5</li>
 </ul>
-
 <h2 id="前提">前提</h2>
-
 <ul>
 <li>Lineアカウント作成済み</li>
 <li>Herokuアカウント作成済み</li>
 <li>heroku cliでログイン済み</li>
 </ul>
-
 <h2 id="ソース">ソース</h2>
-
 <p><a href="https://github.com/onmytk/LineBot">onmytk/LineBot</a></p>
-
 <h2 id="やったこと">やったこと</h2>
-
-<h3 id="line-developers-https-developers-line-biz-ja-でプロバイダ作成"><a href="https://developers.line.biz/ja/">Line Developers</a>でプロバイダ作成</h3>
-
-<p>Line APIを使えるようにするために<br />
-1. プロバイダ作成<br />
-2. チャンネル作成</p>
-
-<p>手順はこの辺参考<br />
-<a href="https://qiita.com/nkjm/items/38808bbc97d6927837cd">LINEのBot開発 超入門（前編） ゼロから応答ができるまで</a></p>
-
-<h3 id="herokuでアプリケーション作成">herokuでアプリケーション作成</h3>
-
+<h3 id="line-developershttpsdeveloperslinebizjaでプロバイダ作成"><a href="https://developers.line.biz/ja/">Line Developers</a>でプロバイダ作成</h3>
+<p>Line APIを使えるようにするために</p>
 <ol>
-<li><p>作業フォルダにgitリポジトリ作成</p>
-
+<li>プロバイダ作成</li>
+<li>チャンネル作成</li>
+</ol>
+<p>手順はこの辺参考<br>
+<a href="https://qiita.com/nkjm/items/38808bbc97d6927837cd">LINEのBot開発 超入門（前編） ゼロから応答ができるまで</a></p>
+<h3 id="herokuでアプリケーション作成">herokuでアプリケーション作成</h3>
+<ol>
+<li>作業フォルダにgitリポジトリ作成</li>
+</ol>
 <pre><code>$ git init
 $ git add .
 $ git commit -m &quot;first commit&quot;
-</code></pre></li>
-
-<li><p>herokuにアプリケーション作成</p>
-
-<pre><code>$ heroku create &lt;アプリ名&gt;
-</code></pre></li>
-
-<li><p>デプロイ</p>
-
-<pre><code>$ git push heroku master
-</code></pre></li>
-
-<li><p>DB追加<br />
-TODO</p></li>
-
-<li><p>環境変数追加<br />
-Line Developersからチャンネルのアクセストークンとかを取得して、herokuの環境変数に追加<br />
-DBのURLとかも追加する</p></li>
-
-<li><p>herokuのアドレスをLine DevelopersのWebhook URLに設定<br />
-https://&lt;アプリ名&gt;.herokuapp.com/callback<br />
-を設定</p></li>
+</code></pre><ol start="2">
+<li>herokuにアプリケーション作成</li>
 </ol>
-
+<pre><code>$ heroku create &lt;アプリ名&gt;
+</code></pre><ol start="3">
+<li>デプロイ</li>
+</ol>
+<pre><code>$ git push heroku master
+</code></pre><ol start="4">
+<li>
+<p>DB追加<br>
+TODO</p>
+</li>
+<li>
+<p>環境変数追加<br>
+Line Developersからチャンネルのアクセストークンとかを取得して、herokuの環境変数に追加<br>
+DBのURLとかも追加する</p>
+</li>
+<li>
+<p>herokuのアドレスをLine DevelopersのWebhook URLに設定<br>
+https://&lt;アプリ名&gt;.herokuapp.com/callback<br>
+を設定</p>
+</li>
+</ol>
 <h3 id="プログラム作成">プログラム作成</h3>
-
 <h4 id="ライブラリ">ライブラリ</h4>
-
 <p>適宜pipでインストール</p>
-
 <pre><code>Flask==1.1.1
 line-bot-sdk==1.12.1
 psycopg2==2.7.5
 SQLAlchemy==1.3.6
 Flask-SQLAlchemy==2.4.0
-</code></pre>
-
-<h4 id="ソース-1">ソース</h4>
-
+</code></pre><h4 id="ソース-1">ソース</h4>
 <p>メッセージの頭見て</p>
-
 <ul>
 <li>add : DBに追加</li>
 <li>delete : DBから削除</li>
 <li>summary : 集計</li>
 </ul>
-
 <p>を行う</p>
-
 <pre><code>from flask import Flask, request, abort
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import func, desc
@@ -305,33 +285,18 @@ if __name__ == '__main__':
     # app.run(host='0.0.0.0', port=port, debug=True)
     app.run(host='0.0.0.0', port=port)
 
-</code></pre>
-
-<h4 id="諸々作成">諸々作成</h4>
-
+</code></pre><h4 id="諸々作成">諸々作成</h4>
 <p>Procfileを作成</p>
-
 <pre><code>$ echo &quot;web: python main.py&quot; &gt; Procfile
-</code></pre>
-
-<p>requirements.txtを作成</p>
-
+</code></pre><p>requirements.txtを作成</p>
 <pre><code>$ pip freeze &gt; requirements.txt
-</code></pre>
-
-<p>runtime.txtを作成</p>
-
+</code></pre><p>runtime.txtを作成</p>
 <pre><code>$ echo &quot;python-3.6.5&quot; &gt; runtime.txt
-</code></pre>
-
-<h3 id="デプロイ-動作確認">デプロイ&amp;動作確認</h3>
-
+</code></pre><h3 id="デプロイ動作確認">デプロイ&amp;動作確認</h3>
 <pre><code>$ git add .
 $ git commit -m &quot;こみっと&quot;
 $ git push heroku master
-</code></pre>
-
-<p><img src="https://onmytk.github.io/onmblog/img/2019-09-29_191331.jpg" alt="image" /></p>
+</code></pre><p><img src="https://onmytk.github.io/onmblog/img/2019-09-29_191331.jpg" alt="image"></p>
 
     </section> 
     
@@ -340,7 +305,7 @@ $ git push heroku master
   </article>
   
 <div class="share-card">
-    <a class="twitter" href="https://twitter.com/intent/tweet?text=https%3a%2f%2fonmytk.github.io%2fonmblog%2fposts%2flinebot%2f - Heroku%20%2b%20python%e3%81%a7Line%20Bot%e3%82%92%e4%bd%9c%e3%82%8b by @https%3a%2f%2ftwitter.com%2fonmytk"><i class="fa fa-twitter"></i> Tweet</a>
+    <a class="twitter" href="https://twitter.com/intent/tweet?text=https%3a%2f%2fonmytk.github.io%2fonmblog%2fposts%2flinebot%2f - Heroku%20%2b%20python%e3%81%a7Line%20Bot%e3%82%92%e4%bd%9c%e3%82%8b by @onmytk"><i class="fa fa-twitter"></i> Tweet</a>
 
     <a class="facebook" href="#" onclick="
         window.open(
@@ -393,7 +358,13 @@ $ git push heroku master
         
         <a href="https://onmytk.github.io/onmblog/tags/foo">foo<span>(1)</span></a>,
         
+        <a href="https://onmytk.github.io/onmblog/tags/gae">gae<span>(1)</span></a>,
+        
+        <a href="https://onmytk.github.io/onmblog/tags/gin">gin<span>(1)</span></a>,
+        
         <a href="https://onmytk.github.io/onmblog/tags/github">github<span>(1)</span></a>,
+        
+        <a href="https://onmytk.github.io/onmblog/tags/go">go<span>(1)</span></a>,
         
         <a href="https://onmytk.github.io/onmblog/tags/heroku">heroku<span>(1)</span></a>,
         

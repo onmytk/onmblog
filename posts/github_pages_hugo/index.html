@@ -7,7 +7,7 @@
 <base href="https://onmytk.github.io/onmblog">
 <meta name="author" content="onmytk">
 
-<meta name="generator" content="Hugo 0.53" />
+<meta name="generator" content="Hugo 0.68.3" />
 <title>GitHub Pages &#43; Hugoでブログ</title>
 <link rel="shortcut icon" href="https://onmytk.github.io/images/favicon.ico" type="">
 <link rel="stylesheet" href="https://onmytk.github.io/onmblog/css/style.css">
@@ -22,8 +22,8 @@
 
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@https://twitter.com/onmytk">
-  <meta name="twitter:creator" content="@https://twitter.com/onmytk">
+  <meta name="twitter:site" content="@onmytk">
+  <meta name="twitter:creator" content="@onmytk">
 
 
 <meta property="og:title" content="GitHub Pages &#43; Hugoでブログ">
@@ -78,70 +78,39 @@
     </section>
     
     <section id="content" class="body">
-        
-
-<h2 id="hugoとは">Hugoとは</h2>
-
+        <h2 id="hugoとは">Hugoとは</h2>
 <p><a href="https://www.google.co.jp/search?q=Hugo">Hugoとは</a></p>
-
 <h2 id="github-pagesとは">GitHub Pagesとは</h2>
-
 <p><a href="https://www.google.co.jp/search?q=GitHub+Pages">GitHub Pagesとは</a></p>
-
 <h2 id="手順">手順</h2>
-
 <h3 id="環境">環境</h3>
-
 <ul>
 <li>Ubuntu 16.0.4</li>
 </ul>
-
 <h3 id="hugoインストール">Hugoインストール</h3>
-
-<pre><code class="language-sh">$ sudo apt-get install hugo
-</code></pre>
-
-<h3 id="githubリポジトリ作成">GitHubリポジトリ作成</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ sudo apt-get install hugo
+</code></pre></div><h3 id="githubリポジトリ作成">GitHubリポジトリ作成</h3>
 <p>GitHub Pagesを公開するリポジトリを作成する。
-GitHub PagesのURLは次のようになる。<br />
+GitHub PagesのURLは次のようになる。<br>
 <code>https://&lt;ユーザ名&gt;.github.io/&lt;リポジトリ名&gt;</code></p>
-
 <h3 id="サイトを作成">サイトを作成</h3>
-
 <p>ホームディレクトリに作業用のblogディレクトリを作成する。<code>hugo new site &lt;サイト名&gt;</code>でサイトを作成する。</p>
-
-<pre><code class="language-sh">$ mkdir ~/blog
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ mkdir ~/blog
 $ cd ~/blog
 $ hugo new site &lt;サイト名&gt;
-</code></pre>
-
-<h3 id="hugoのテーマ追加">Hugoのテーマ追加</h3>
-
+</code></pre></div><h3 id="hugoのテーマ追加">Hugoのテーマ追加</h3>
 <p><a href="https://themes.gohugo.io/">Hugo Themes</a>からサイトのテーマを探す。テーマのDownloadをクリックするとGithubに飛ぶ。themesディレクトリに<code>git clone</code>をすることで追加する。</p>
-
-<pre><code class="language-sh">$ cd themes
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ cd themes
 $ git clone &lt;git url&gt;
-</code></pre>
-
-<h3 id="hugoの設定">Hugoの設定</h3>
-
+</code></pre></div><h3 id="hugoの設定">Hugoの設定</h3>
 <p>config.tomlを適宜編集する。</p>
-
-<pre><code class="language-sh:config.toml">theme = &quot;&lt;テーマ名&gt;&quot;
-baseurl = &quot;https://&lt;ユーザ名&gt;.github.io/&lt;リポジトリ名&gt;&quot;
-canonifyurls = true
-</code></pre>
-
-<h3 id="とりあえず記事作成">とりあえず記事作成</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh:config.toml" data-lang="sh:config.toml"><span style="color:#a6e22e">theme</span> = <span style="color:#e6db74">&#34;&lt;テーマ名&gt;&#34;</span>
+<span style="color:#a6e22e">baseurl</span> = <span style="color:#e6db74">&#34;https://&lt;ユーザ名&gt;.github.io/&lt;リポジトリ名&gt;&#34;</span>
+<span style="color:#a6e22e">canonifyurls</span> = <span style="color:#66d9ef">true</span>
+</code></pre></div><h3 id="とりあえず記事作成">とりあえず記事作成</h3>
 <p>ページを作成する。</p>
-
-<pre><code class="language-sh">$ hugo new posts/&lt;ページタイトル&gt;.md
-</code></pre>
-
-<p><code>~/blog/&lt;サイト名&gt;/content/posts/&lt;ページタイトル&gt;.md</code>が作成される。内容は以下の感じ。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ hugo new posts/&lt;ページタイトル&gt;.md
+</code></pre></div><p><code>~/blog/&lt;サイト名&gt;/content/posts/&lt;ページタイトル&gt;.md</code>が作成される。内容は以下の感じ。</p>
 <pre><code>---
 title: &quot;&lt;ページタイトル&gt;&quot;
 date: 2019-05-05T00:16:28+09:00
@@ -151,52 +120,30 @@ draft: true
 # test
 ## test
 
-</code></pre>
-
-<p>&mdash;で囲まれてる中がメタデータ？になる。<code>draft</code>は<code>true</code>だと下書き状態、<code>false</code>で公開となる。&mdash;以下が内容を書く。</p>
-
+</code></pre><p>&mdash;で囲まれてる中がメタデータ？になる。<code>draft</code>は<code>true</code>だと下書き状態、<code>false</code>で公開となる。&mdash;以下が内容を書く。</p>
 <h3 id="ビルド">ビルド</h3>
-
 <p>ホスティング内容を生成する。</p>
-
-<pre><code class="language-sh">$ hugo
-</code></pre>
-
-<p>ホスティング内容が<code>public</code>ディレクトリ下に生成される。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ hugo
+</code></pre></div><p>ホスティング内容が<code>public</code>ディレクトリ下に生成される。</p>
 <h3 id="ローカルで確認">ローカルで確認</h3>
-
 <p>ローカルサーバを起動する。</p>
-
-<pre><code class="language-sh">$ hugo server -D
-</code></pre>
-
-<p><code>localhost:1313/&lt;リポジトリ名&gt;</code>でプレビューを確認可能。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ hugo server -D
+</code></pre></div><p><code>localhost:1313/&lt;リポジトリ名&gt;</code>でプレビューを確認可能。</p>
 <h3 id="公開">公開</h3>
-
 <p><code>public</code>ディレクトリ下をgh-pagesブランチへpushする。</p>
-
-<pre><code class="language-sh">$ cd public
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ cd public
 $ git init
 $ git remote add origin git@github.com:&lt;ユーザ名&gt;/&lt;リポジトリ&gt;.git
 $ git checkout -b gh-pages
 $ git add .
-$ git commit -m 'initial commit'
+$ git commit -m <span style="color:#e6db74">&#39;initial commit&#39;</span>
 $ git push origin gh-pages
-</code></pre>
-
-<p><code>baseurl</code>に設定したURLにアクセスすると公開される。</p>
-
+</code></pre></div><p><code>baseurl</code>に設定したURLにアクセスすると公開される。</p>
 <h3 id="その他">その他</h3>
-
 <p>参考URLやHugoページを参照</p>
-
 <h2 id="参考">参考</h2>
-
 <p><a href="https://qiita.com/satzz/items/e24bd703fc04fb45f7ef">HugoとGitHub Pagesで静的サイトを公開する</a>
 <a href="https://qiita.com/ryoma-tokushige/items/eba3e6cd415e9755af87">【2018年版】Hugoとgithub pagesでブログ作る方法【Circle CIも回します】</a></p>
-
 <p><a href="https://github.com/onmytk/onmblog">onmytk/onmblog</a></p>
 
     </section> 
@@ -206,7 +153,7 @@ $ git push origin gh-pages
   </article>
   
 <div class="share-card">
-    <a class="twitter" href="https://twitter.com/intent/tweet?text=https%3a%2f%2fonmytk.github.io%2fonmblog%2fposts%2fgithub_pages_hugo%2f - GitHub%20Pages%20%2b%20Hugo%e3%81%a7%e3%83%96%e3%83%ad%e3%82%b0 by @https%3a%2f%2ftwitter.com%2fonmytk"><i class="fa fa-twitter"></i> Tweet</a>
+    <a class="twitter" href="https://twitter.com/intent/tweet?text=https%3a%2f%2fonmytk.github.io%2fonmblog%2fposts%2fgithub_pages_hugo%2f - GitHub%20Pages%20%2b%20Hugo%e3%81%a7%e3%83%96%e3%83%ad%e3%82%b0 by @onmytk"><i class="fa fa-twitter"></i> Tweet</a>
 
     <a class="facebook" href="#" onclick="
         window.open(
@@ -259,7 +206,13 @@ $ git push origin gh-pages
         
         <a href="https://onmytk.github.io/onmblog/tags/foo">foo<span>(1)</span></a>,
         
+        <a href="https://onmytk.github.io/onmblog/tags/gae">gae<span>(1)</span></a>,
+        
+        <a href="https://onmytk.github.io/onmblog/tags/gin">gin<span>(1)</span></a>,
+        
         <a href="https://onmytk.github.io/onmblog/tags/github">github<span>(1)</span></a>,
+        
+        <a href="https://onmytk.github.io/onmblog/tags/go">go<span>(1)</span></a>,
         
         <a href="https://onmytk.github.io/onmblog/tags/heroku">heroku<span>(1)</span></a>,
         

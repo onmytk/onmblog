@@ -1,10 +1,70 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://onmytk.github.io/onmblog/tags/bot/</loc>
+    <lastmod>2019-09-29T18:24:07+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://onmytk.github.io/onmblog/tags/heroku/</loc>
+    <lastmod>2019-09-29T18:24:07+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://onmytk.github.io/onmblog/posts/linebot/</loc>
     <lastmod>2019-09-29T18:24:07+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://onmytk.github.io/onmblog/tags/line/</loc>
+    <lastmod>2019-09-29T18:24:07+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://onmytk.github.io/onmblog/posts/</loc>
+    <lastmod>2019-09-29T18:24:07+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://onmytk.github.io/onmblog/tags/python/</loc>
+    <lastmod>2019-09-29T18:24:07+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://onmytk.github.io/onmblog/tags/</loc>
+    <lastmod>2019-09-29T18:24:07+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://onmytk.github.io/onmblog/</loc>
+    <lastmod>2019-09-29T18:24:07+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://onmytk.github.io/onmblog/tags/gae/</loc>
+    <lastmod>2019-05-13T21:30:20+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://onmytk.github.io/onmblog/posts/gae_go_gin/</loc>
+    <lastmod>2019-05-13T21:30:20+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://onmytk.github.io/onmblog/tags/gin/</loc>
+    <lastmod>2019-05-13T21:30:20+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://onmytk.github.io/onmblog/tags/go/</loc>
+    <lastmod>2019-05-13T21:30:20+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://onmytk.github.io/onmblog/tags/github/</loc>
+    <lastmod>2019-05-05T02:55:03+09:00</lastmod>
   </url>
   
   <url>
@@ -13,78 +73,27 @@
   </url>
   
   <url>
-    <loc>https://onmytk.github.io/onmblog/posts/firstpost/</loc>
-    <lastmod>2019-05-05T00:16:28+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://onmytk.github.io/onmblog/about/</loc>
+    <loc>https://onmytk.github.io/onmblog/tags/hugo/</loc>
+    <lastmod>2019-05-05T02:55:03+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://onmytk.github.io/onmblog/tags/bar/</loc>
     <lastmod>2019-05-05T00:16:28+09:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://onmytk.github.io/onmblog/tags/bot/</loc>
-    <lastmod>2019-09-29T18:24:07+09:00</lastmod>
-    <priority>0</priority>
+    <loc>https://onmytk.github.io/onmblog/posts/firstpost/</loc>
+    <lastmod>2019-05-05T00:16:28+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://onmytk.github.io/onmblog/tags/foo/</loc>
     <lastmod>2019-05-05T00:16:28+09:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://onmytk.github.io/onmblog/tags/github/</loc>
-    <lastmod>2019-05-05T02:55:03+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://onmytk.github.io/onmblog/tags/heroku/</loc>
-    <lastmod>2019-09-29T18:24:07+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://onmytk.github.io/onmblog/tags/hugo/</loc>
-    <lastmod>2019-05-05T02:55:03+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://onmytk.github.io/onmblog/tags/line/</loc>
-    <lastmod>2019-09-29T18:24:07+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://onmytk.github.io/onmblog/posts/</loc>
-    <lastmod>2019-09-29T18:24:07+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://onmytk.github.io/onmblog/tags/python/</loc>
-    <lastmod>2019-09-29T18:24:07+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://onmytk.github.io/onmblog/tags/</loc>
-    <lastmod>2019-05-05T00:16:28+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://onmytk.github.io/onmblog/</loc>
-    <lastmod>2019-09-29T18:24:07+09:00</lastmod>
-    <priority>0</priority>
+    <loc>https://onmytk.github.io/onmblog/about/</loc>
   </url>
   
 </urlset>

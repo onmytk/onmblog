@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Bot on tmp</title>
+    <title>bot on tmp</title>
     <link>https://onmytk.github.io/onmblog/tags/bot/</link>
-    <description>Recent content in Bot on tmp</description>
+    <description>Recent content in bot on tmp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 29 Sep 2019 18:24:07 +0900</lastBuildDate>
@@ -19,20 +19,14 @@
       <guid>https://onmytk.github.io/onmblog/posts/linebot/</guid>
       <description>動作環境  python 3.6.5  前提  Lineアカウント作成済み Herokuアカウント作成済み heroku cliでログイン済み  ソース onmytk/LineBot
 やったこと Line Developersでプロバイダ作成 Line APIを使えるようにするために
-1. プロバイダ作成
-2. チャンネル作成
-手順はこの辺参考
+ プロバイダ作成 チャンネル作成  手順はこの辺参考
 LINEのBot開発 超入門（前編） ゼロから応答ができるまで
-herokuでアプリケーション作成  作業フォルダにgitリポジトリ作成
-$ git init $ git add . $ git commit -m &amp;quot;first commit&amp;quot;  herokuにアプリケーション作成
-$ heroku create &amp;lt;アプリ名&amp;gt;  デプロイ
-$ git push heroku master  DB追加
+herokuでアプリケーション作成  作業フォルダにgitリポジトリ作成  $ git init $ git add . $ git commit -m &amp;quot;first commit&amp;quot; herokuにアプリケーション作成  $ heroku create &amp;lt;アプリ名&amp;gt; デプロイ  $ git push heroku master  DB追加
 TODO
- 環境変数追加
+  環境変数追加
 Line Developersからチャンネルのアクセストークンとかを取得して、herokuの環境変数に追加
 DBのURLとかも追加する
- herokuのアドレスをLine DevelopersのWebhook URLに設定
-https://&amp;lt;アプリ名&amp;gt;.herokuapp.com/callback</description>
+  herokuのアドレスをLine DevelopersのWebhook URLに設定</description>
     </item>
     
   </channel>

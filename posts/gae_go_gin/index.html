@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<base href="https://onmytk.github.io/onmblog">
+<meta name="author" content="onmytk">
+
+<meta name="generator" content="Hugo 0.68.3" />
+<title>GAE/Go &#43; ginでAPIサーバを作る</title>
+<link rel="shortcut icon" href="https://onmytk.github.io/images/favicon.ico" type="">
+<link rel="stylesheet" href="https://onmytk.github.io/onmblog/css/style.css">
+<link rel="stylesheet" href="https://onmytk.github.io/onmblog/css/highlight.css">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+
+
+<link href="https://onmytk.github.io/onmblog/index.xml" rel="alternate" type="application/rss+xml" title="tmp" />
+
+
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@onmytk">
+  <meta name="twitter:creator" content="@onmytk">
+
+
+<meta property="og:title" content="GAE/Go &#43; ginでAPIサーバを作る">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://onmytk.github.io/onmblog">
+
+
+
+
+  <meta name="og:description" content="サンプルアプリケーションの起動まで">
+
+
+<link rel="canonical" href="https://onmytk.github.io/onmblog/posts/gae_go_gin/">
+
+    </head>
+<body>
+	  <header class="header">
+			<img src="" alt="">
+
+		</header>
+    <nav class="main-nav">
+        <ul>
+    <li class="active"><a href='https://onmytk.github.io/onmblog'>Articles</a></li>
+    <li><a href='https://onmytk.github.io/onmblog/about'>About</a></li>
+    
+</ul>
+
+    </nav>
+    
+    
+    
+    <div id="site-wrapper">
+        <main>
+            
+  <article class="single">
+    <h1>GAE/Go &#43; ginでAPIサーバを作る</h1>
+    <section class="extras">
+        <span class="tags">
+          <small class="time">May 13, 2019</small>
+          
+             , posted under 
+             
+                <a href="https://onmytk.github.io/onmblog/tags/gae">GAE</a>
+             
+                <a href="https://onmytk.github.io/onmblog/tags/go">Go</a>
+             
+                <a href="https://onmytk.github.io/onmblog/tags/gin">gin</a>
+             
+          
+        </span>
+    </section>
+    <section class="description">
+      サンプルアプリケーションの起動まで
+    </section>
+    
+    <section id="content" class="body">
+        <h2 id="webアプリ概要">Webアプリ概要</h2>
+<p>Todo</p>
+<h2 id="環境">環境</h2>
+<ul>
+<li>Ubuntu 18.10</li>
+<li>Go 1.10</li>
+<li>python 2.7.15</li>
+</ul>
+<h2 id="手順">手順</h2>
+<h3 id="google-cloud-sdkのインストール">Google Cloud SDKのインストール</h3>
+<p><a href="https://cloud.google.com/sdk/docs/?hl=ja#deb">Google Cloud SDKのドキュメント</a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ gcloud init
+</code></pre></div><p>でアカウントの設定、新しいプロジェクの作成まで行う。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ sudo apt-get install google-cloud-sdk-app-engine-python google-cloud-sdk-app-engine-go google-cloud-sdk-datastore-emulator
+</code></pre></div><h3 id="google-app-engineアプリケーションの作成">Google App Engineアプリケーションの作成</h3>
+<p><a href="https://console.cloud.google.com/">Google Cloud Platform</a><br>
+App Engine &gt; 開始 &gt;<br>
+Language: Go<br>
+Environment: 標準<br>
+-&gt; 作成</p>
+<h3 id="gae設定ファイル作成">GAE設定ファイル作成</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml:app.yaml" data-lang="yaml:app.yaml"><span style="color:#66d9ef">version</span>: <span style="color:#ae81ff">1</span>
+<span style="color:#66d9ef">runtime</span>: go
+<span style="color:#66d9ef">api_version</span>: go1
+
+<span style="color:#66d9ef">handlers</span>:
+- <span style="color:#66d9ef">url</span>: /.*
+  <span style="color:#66d9ef">script</span>: _go_app
+</code></pre></div><h3 id="サンプルアプリケーション">サンプルアプリケーション</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go:main.go" data-lang="go:main.go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#f92672">import</span> (
+	<span style="color:#e6db74">&#34;net/http&#34;</span>
+	<span style="color:#e6db74">&#34;github.com/gin-gonic/gin&#34;</span>
+)
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">init</span>()  {
+	<span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">SetMode</span>(<span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">ReleaseMode</span>)
+	<span style="color:#a6e22e">r</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">New</span>()
+
+	<span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">GET</span>(<span style="color:#e6db74">&#34;/&#34;</span>, <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Context</span>) {
+		<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">String</span>(<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">StatusOK</span>, <span style="color:#e6db74">&#34;Hello World&#34;</span>)
+	})
+
+	<span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">GET</span>(<span style="color:#e6db74">&#34;/ping&#34;</span>, <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">gin</span>.<span style="color:#a6e22e">Context</span>)  {
+		<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">String</span>(<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">StatusOK</span>, <span style="color:#e6db74">&#34;pong&#34;</span>)
+	})
+
+	<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Handle</span>(<span style="color:#e6db74">&#34;/&#34;</span>, <span style="color:#a6e22e">r</span>)
+}
+</code></pre></div><h3 id="サンプルアプリケーションの起動">サンプルアプリケーションの起動</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ dev_appserver.py app.yaml
+</code></pre></div><p>localhost:8080にアクセスしてHello Worldが表示されてればおｋ</p>
+
+    </section> 
+    
+    
+     
+  </article>
+  
+<div class="share-card">
+    <a class="twitter" href="https://twitter.com/intent/tweet?text=https%3a%2f%2fonmytk.github.io%2fonmblog%2fposts%2fgae_go_gin%2f - GAE%2fGo%20%2b%20gin%e3%81%a7API%e3%82%b5%e3%83%bc%e3%83%90%e3%82%92%e4%bd%9c%e3%82%8b by @onmytk"><i class="fa fa-twitter"></i> Tweet</a>
+
+    <a class="facebook" href="#" onclick="
+        window.open(
+          'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+          'facebook-share-dialog',
+          'width=626,height=436');
+        return false;"><i class="fa fa-facebook"></i> Share
+    </a>
+</div>
+
+
+ 
+  
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = '';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+        </main>
+        
+        <aside class="desktop-only">
+            
+	<div class="widgets">
+      
+  <section class="widget">
+    <h2 class="widget-title">Author</h2>
+    <a href="https://twitter.com/onmytk">onmytk</a>
+  </section>
+  
+  <section class="widget">
+    <h2 class="widget-title">Tags</h2>
+        
+        <a href="https://onmytk.github.io/onmblog/tags/bar">bar<span>(1)</span></a>,
+        
+        <a href="https://onmytk.github.io/onmblog/tags/bot">bot<span>(1)</span></a>,
+        
+        <a href="https://onmytk.github.io/onmblog/tags/foo">foo<span>(1)</span></a>,
+        
+        <a href="https://onmytk.github.io/onmblog/tags/gae">gae<span>(1)</span></a>,
+        
+        <a href="https://onmytk.github.io/onmblog/tags/gin">gin<span>(1)</span></a>,
+        
+        <a href="https://onmytk.github.io/onmblog/tags/github">github<span>(1)</span></a>,
+        
+        <a href="https://onmytk.github.io/onmblog/tags/go">go<span>(1)</span></a>,
+        
+        <a href="https://onmytk.github.io/onmblog/tags/heroku">heroku<span>(1)</span></a>,
+        
+        <a href="https://onmytk.github.io/onmblog/tags/hugo">hugo<span>(1)</span></a>,
+        
+        <a href="https://onmytk.github.io/onmblog/tags/line">line<span>(1)</span></a>,
+        
+        <a href="https://onmytk.github.io/onmblog/tags/python">python<span>(1)</span></a>,
+        
+  </section>
+
+</div>
+
+
+            <footer id="footer">
+    <p class="small">
+      
+    </p>
+</footer>
+        </aside>
+    </div>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://onmytk.github.io/onmblog/js/main.js"></script>
+<script src="https://onmytk.github.io/onmblog/js/highlight.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+</body>
+</html>
