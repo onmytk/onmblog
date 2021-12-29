@@ -16,8 +16,8 @@ paginate = 12
 	customCSS = false
 	readMore = "Read Up"
 
-	twitter = "https://twitter.com/onmytk"
-	github = "https://github.com/onmytk"
+	twitter = "onmytk"
+	github = "onmytk"
 
 	widgets = true
 	
